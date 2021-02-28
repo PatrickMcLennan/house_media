@@ -1,7 +1,17 @@
 # House Media Server
 
-## Node.js Server && React Client to browse, view and update the media on my NAS
+## Node.js Server & React Client to browse, view and update the media on my NAS
 
+Media content is added to the NAS HDD and has its [tmdb ID](https://developers.themoviedb.org/3/getting-started/introduction) attached. Ex:
+  > `Batman [TMDB_MOVIE_ID].mk4`, 
+
+  > `Austin Powers [TMDB_MOVIE_ID].mk4`,
+
+  > `The Simpsons[TMDB_SHOW_ID]/S12 [TMDB_SEASON_ID]/S12E7 [TMDB_EPISODE_ID].avi`,
+
+  > `Breaking Bad[TMDB_SHOW_ID]/S4 [TMDB_SEASON_ID]/S4E3 [TMDB_EPISODE_ID].avi`,
+
+Via cron or API trigger, the hdd is swept for new content.  If ids are found on the hdd not yet in the postgres db, a GET request is made to the tmdb API for that movie / shows information, which we add to our postgres db.
 ### Frameworks
  - [next.js](https://nextjs.org/)
 
