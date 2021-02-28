@@ -7,7 +7,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "test": "jest",
+    "migrate": "knex migrate:latest"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.13.0",
