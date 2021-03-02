@@ -2,8 +2,8 @@
 
 ## Node.js Server & React Client to browse, view and update the media on my NAS
 
-Media content is added to the NAS HDD and has its [tmdb ID](https://developers.themoviedb.org/3/getting-started/introduction) attached. Ex:
-  > `Batman [TMDB_MOVIE_ID].mk4`, 
+Media content is added to the NAS HDD with its [tmdb ID](https://developers.themoviedb.org/3/getting-started/introduction) attached. Ex:
+  > `Batman Returns [TMDB_MOVIE_ID].mk4`, 
 
   > `Austin Powers [TMDB_MOVIE_ID].mk4`,
 
@@ -11,7 +11,9 @@ Media content is added to the NAS HDD and has its [tmdb ID](https://developers.t
 
   > `Breaking Bad[TMDB_SHOW_ID]/S4 [TMDB_SEASON_ID]/S4E3 [TMDB_EPISODE_ID].avi`,
 
-Via cron or API trigger, the hdd is swept for new content.  If ids are found on the hdd not yet in the postgres db, a GET request is made to the tmdb API for that movie / shows information, which we add to our postgres db.
+Via cron or API trigger, the hdd is swept for new content.  If ids are found on the hdd not yet in the postgres db, a GET request is made to the tmdb API for that movie or shows information.  We then store all information & the files hdd path in the db.
+
+Any time content is added to the db a rebuild event is triggered, causing Next.js to Statically Generate a page for every id in the db.  After this, our pm2 process restarts and our app is now up to date with the latest static content on our hdd.
 ### Frameworks
  - [next.js](https://nextjs.org/)
 
@@ -32,9 +34,16 @@ Via cron or API trigger, the hdd is swept for new content.  If ids are found on 
   - [knex](http://knexjs.org/)
   - [node-mocks-http](https://github.com/howardabrams/node-mocks-http)
 
+### Hygiene
+  - [eslint](https://eslint.org/)
+  - [prettier](https://prettier.io/)
+
 ### DB
   - [pg](https://github.com/brianc/node-postgres)
   - [docker](https://www.docker.com/)
+
+### Deployment
+  - [pm2](https://pm2.keymetrics.io/)
 
 #### Get Started
   1. Pull down repo
