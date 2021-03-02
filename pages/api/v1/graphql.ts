@@ -13,9 +13,9 @@ export const config = {
 export default new ApolloServer({
   typeDefs,
   resolvers,
-  //   context: () => ({
-  //     db: Knex(knexConfig),
-  //   }),
+  context: () => ({
+    db: Knex(knexConfig),
+  }),
   playground: true,
   introspection: true,
 }).createHandler({
