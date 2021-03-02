@@ -47,7 +47,7 @@ export const resolvers = {
             .catch(() => null)
         );
 
-      console.log(db.table(`movies`));
+      //   console.log(db.table(`movies`));
 
       if (!currentFilesOnHdd) return `bad`;
       return `good`;
