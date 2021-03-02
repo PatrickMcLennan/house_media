@@ -36,7 +36,7 @@ export const getStaticPaths: GetStaticPaths = async () =>
       })),
       fallback: false,
     }))
-    .catch((err) => ({
+    .catch(() => ({
       paths: [{ params: { movieId: `404` } }],
       fallback: true,
     }));
