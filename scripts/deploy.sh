@@ -4,6 +4,6 @@ bash reinstall.sh
 bash test.sh
 bash build.sh
 
-pm2 restart 0
+pm2 restart house_media
 
 exit 0
